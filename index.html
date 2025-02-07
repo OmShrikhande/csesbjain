@@ -4,8 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSE sbjain.com</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    
+
+    <!-- Snowfall Effect -->
+    <div class="snow" id="snowContainer"></div>
+
+    <div class="starting" id="starting">
+        <div class="image">
+            <img src="./assets/cse_department.png" alt="CSE Department">
+        </div>
+    </div>
+
+    <script>
+        // Create Snowflakes
+        const snowContainer = document.getElementById("snowContainer");
+        for (let i = 0; i < 75; i++) {  // Increased the number of snowflakes
+            let snowflake = document.createElement("span");
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.top = `${Math.random() * 100}vh`;
+            snowflake.style.animationDelay = `${Math.random() * 5}s`;
+            snowflake.style.animationDuration = `${Math.random() * 7 + 3}s`;
+            snowContainer.appendChild(snowflake);
+        }
+
+        // Mouse Attraction Effect
+        document.addEventListener("mousemove", (e) => {
+            const snowflakes = document.querySelectorAll(".snow span");
+            snowflakes.forEach(snowflake => {
+                let x = (e.clientX - window.innerWidth / 2) * 0.02;
+                let y = (e.clientY - window.innerHeight / 2) * 0.02;
+                snowflake.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 360}deg)`;
+            });
+        });
+    </script>
+
 </body>
 </html>

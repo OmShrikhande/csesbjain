@@ -1,0 +1,86 @@
+body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #0c0c33, #000000);
+    position: relative;
+}
+
+/* Snowfall Effect */
+.snow {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.snow span {
+    position: absolute;
+    display: block;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: snowfall linear infinite, moveRandom infinite alternate ease-in-out;
+}
+
+/* More Snowflakes with Different Sizes and Speeds */
+.snow span:nth-child(n) { width: 4px; height: 4px; animation-duration: 5s; }
+.snow span:nth-child(2n) { width: 6px; height: 6px; animation-duration: 7s; }
+.snow span:nth-child(3n) { width: 8px; height: 8px; animation-duration: 9s; }
+
+/* Falling Snow Effect */
+@keyframes snowfall {
+    0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
+    100% { transform: translateY(100vh) translateX(calc(50vw * (random() - 0.5))); opacity: 1; }
+}
+
+/* Random Swaying Movement */
+@keyframes moveRandom {
+    0% { transform: translateX(0px); }
+    50% { transform: translateX(15px); }
+    100% { transform: translateX(-15px); }
+}
+
+/* Cursor Attraction Effect */
+@keyframes moveToCursor {
+    from { transform: translateX(var(--cursor-x)) translateY(var(--cursor-y)); }
+    to { transform: translateX(0) translateY(0); }
+}
+
+/* Main Container */
+#starting {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    backdrop-filter: blur(3px);
+}
+
+/* Image Styling */
+.image img {
+    width: 100%;
+    max-width: 700px;
+    filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.7));
+    animation: floatImage 5s infinite alternate ease-in-out;
+}
+
+/* Floating Effect */
+@keyframes floatImage {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-15px); }
+}
+
+/* Flickering Glow Effect */
+@keyframes glow {
+    0% { filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5)); }
+    50% { filter: drop-shadow(0px 0px 20px rgba(255, 0, 0, 0.8)); }
+    100% { filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5)); }
+}
+
+.image img:hover {
+    animation: glow 2s infinite alternate ease-in-out;
+}
