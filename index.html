@@ -11,16 +11,29 @@
     <!-- Snowfall Effect -->
     <div class="snow" id="snowContainer"></div>
 
-    <div class="starting" id="starting">
+    <!-- First Section: Intro -->
+    <div class="section" id="starting">
         <div class="image">
             <img src="./assets/cse_department.png" alt="CSE Department">
         </div>
     </div>
 
+    <!-- Second Section: Upcoming Events -->
+     <div id="sxrilled">
+    <div class="section" id="upcoming-events">
+        <h1>Upcoming Events</h1>
+        <ul>
+            <li>🌟 Hackathon 2025 - Jan 15</li>
+            <li>📢 Tech Talk on AI - Feb 20</li>
+            <li>🎓 Graduation Ceremony - March 10</li>
+        </ul>
+    </div>
+</div>
+
     <script>
         // Create Snowflakes
         const snowContainer = document.getElementById("snowContainer");
-        for (let i = 0; i < 75; i++) {  // Increased the number of snowflakes
+        for (let i = 0; i < 50; i++) {  // Increased the number of snowflakes
             let snowflake = document.createElement("span");
             snowflake.style.left = `${Math.random() * 100}vw`;
             snowflake.style.top = `${Math.random() * 100}vh`;
@@ -38,6 +51,14 @@
                 snowflake.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 360}deg)`;
             });
         });
+
+        // Auto Scroll to Upcoming Events after 4 seconds
+        setTimeout(() => {
+            window.scrollTo({
+                top: document.getElementById("sxrilled").offsetTop,
+                behavior: "smooth"
+            });
+        }, 400);
     </script>
 
 </body>
