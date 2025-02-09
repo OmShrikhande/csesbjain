@@ -7,6 +7,14 @@ html, body {
     scrollbar-width: none;
     background: linear-gradient(to bottom, #0c0c33, #000000);
 }
+/* Adding the harryb font */
+@font-face {
+    font-family: 'harryb';
+    src: url(./../assets/fonts/HarryP.ttf);
+    
+  }
+  
+
 
 /* Background - Spooky Night Theme */
 body {
@@ -54,6 +62,9 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+    font-family:'harryb';
+    font-weight: 100;
+    font-size: x-large;
 }
 
 /* Intro Section */
@@ -66,7 +77,7 @@ body {
     
     color: white;
     text-align: center;
-    font-family: Arial, sans-serif;
+    
     padding: 50px 0;
 }
 
