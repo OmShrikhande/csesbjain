@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Committee Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <header class="bg-blue-600 text-white text-center p-6 text-3xl font-bold shadow-lg">Committee Details</header>
+    
+    <div class="container mx-auto p-6 flex flex-col items-center">
+        <div id="committee-info" class="w-full flex flex-col items-center space-y-8">
+            <!-- Content will be dynamically loaded here -->
+        </div>
+    </div>
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const committee = urlParams.get('committee');
+        
+        const committees = {
+            technical: {
+                name: "Technical Committee",
+                mentor: { name: "Dr. Mentor", img: "mentor.jpg" },
+                chairperson: { name: "Alex Johnson", img: "chairperson.jpg" },
+                treasurer: { name: "Sarah Lee", img: "treasurer.jpg" },
+                secretary: { name: "Michael Brown", img: "secretary.jpg" },
+                heads: [
+                    { name: "John Doe", img: "head1.jpg" },
+                    { name: "Emily White", img: "head2.jpg" }
+                ],
+                coHeads: [
+                    { name: "Jane Roe", img: "cohead1.jpg" },
+                    { name: "Daniel Green", img: "cohead2.jpg" }
+                ]
+            }
+        };
+        
+        const committeeData = committees[committee];
+        if (committeeData) {
+            document.getElementById("committee-info").innerHTML = `
+                <h2 class="text-3xl font-bold text-blue-400 text-center">${committeeData.name}</h2>
+                <div class="flex flex-col items-center mt-6">
+                    <h3 class="text-xl font-semibold">Mentor</h3>
+                    <img src="${committeeData.mentor.img}" alt="${committeeData.mentor.name}" class="w-32 h-32 rounded-full mt-2">
+                    <p class="mt-2">${committeeData.mentor.name}</p>
+                </div>
+                <div class="flex justify-center space-x-12 mt-6">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold">Chairperson</h3>
+                        <img src="${committeeData.chairperson.img}" alt="${committeeData.chairperson.name}" class="w-32 h-32 rounded-full mt-2">
+                        <p class="mt-2">${committeeData.chairperson.name}</p>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold">Treasurer</h3>
+                        <img src="${committeeData.treasurer.img}" alt="${committeeData.treasurer.name}" class="w-32 h-32 rounded-full mt-2">
+                        <p class="mt-2">${committeeData.treasurer.name}</p>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold">Secretary</h3>
+                        <img src="${committeeData.secretary.img}" alt="${committeeData.secretary.name}" class="w-32 h-32 rounded-full mt-2">
+                        <p class="mt-2">${committeeData.secretary.name}</p>
+                    </div>
+                </div>
+                <div class="flex justify-center mt-10">
+                    <div class="w-1/2 text-center">
+                        <h3 class="text-xl font-semibold">Heads</h3>
+                        ${committeeData.heads.map(head => `
+                            <div class="flex flex-col items-center mt-4">
+                                <img src="${head.img}" alt="${head.name}" class="w-24 h-24 rounded-full">
+                                <p class="mt-2">${head.name}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="w-1/2 text-center">
+                        <h3 class="text-xl font-semibold">Co-Heads</h3>
+                        ${committeeData.coHeads.map(coHead => `
+                            <div class="flex flex-col items-center mt-4">
+                                <img src="${coHead.img}" alt="${coHead.name}" class="w-24 h-24 rounded-full">
+                                <p class="mt-2">${coHead.name}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        } else {
+            document.getElementById("committee-info").innerHTML = `<p class="text-center text-red-500">Committee not found</p>`;
+        }
+    </script>
+</body>
+</html>
