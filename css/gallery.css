@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Harry+P&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Harry P', Arial, sans-serif; /* Use a Harry Potter-like font */
+    /* background-color: #001f3f; /* Dark navy background */
+    color: #FFD700; /* Gold for card titles */
+    text-shadow: 0 0 2px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700;
+    background-image: url("/assets/images/gallery/Hogwarts\ Train\ -\ Harry\ Potter\ School\ of\ Magic.jfif"); /* Path to your background image */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-attachment: fixed; /* Fix the background image */
+    
+}
+/*
+nav {
+    background-color: #0074D9;
+    color: goldenrod;
+    padding: 15px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: goldenrod;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: goldenrod;
+}
+*/
+header {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #002446; /* Medium blue for header */
+}
+
+h1 {
+    font-size: 3em;
+    color: #FFD700; /* Gold for card titles */
+    text-shadow: 0 0 2px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700;
+}
+
+h2 {
+    text-align: center;
+    margin: 20px 0;
+    color: #FFD700; /* Gold for section titles */
+    text-shadow: 0 0 2px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700; /* Glowing effect */
+    padding: 10px; /* Padding for the title */
+    border-radius: 5px; /* Rounded corners for the title */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    backdrop-filter: blur(5px); /* Blur effect behind the text */
+    margin-left: 550px;
+    margin-right: 550px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #002446; /* Dark blue for cards */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card h3 {
+    margin: 10px 0;
+    color: #FFD700; /* Gold for card titles */
+    text-shadow: 0 0 2px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700; /* Glowing effect */
+    padding: 10px; /* Padding for the title */
+    border-radius: 5px; /* Rounded corners for the title */
+    background-color: transparent; /* Fully transparent background */
+}
+
+/* Fully transparent description */
+.card p {
+    padding: 10px;
+    color: goldenrod; /* Gold for card descriptions */
+    border-radius: 5px; /* Rounded corners for the description */
+    background-color: transparent; /* Fully transparent background */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%; /* Full width */
+    max-width: 800px; /* Maximum width */
+    height: 400px; /* Fixed height */
+    margin: auto;
+    overflow: hidden;
+}
+
+.mySlides {
+    display: none;
+}
+
+.mySlides img {
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Cover the container */
+    border-radius: 10px;
+}
+
+.fade {
+    animation: fade 1.5s;
+}
+
+@keyframes fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+.reverse {
+    direction: rtl; /* This will make the slides appear to slide in the opposite direction */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #002446; /* Medium blue for footer */
+    color: #FFD700; /* Gold for card titles */
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+.slideshow-container {
+    position: relative;
+    width: 100%; /* Full width */
+    max-width: 800px; /* Maximum width */
+    height: 400px; /* Fixed height */
+    margin: auto;
+    overflow: hidden;
+}
+.mySlides img {
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Cover the container */
+}
