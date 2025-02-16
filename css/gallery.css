@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Harry+P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
 * {
     box-sizing: border-box;
@@ -7,109 +7,142 @@
 }
 
 body {
-    font-family: 'Harry P', Arial, sans-serif; /* Use a Harry Potter-like font */
-    /* background-color: #001f3f; /* Dark navy background */
-    color: #FFD700; /* Gold for card titles */
-    text-shadow: 0 0 2px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700;
-    background-image: url("/assets/images/gallery/Hogwarts\ Train\ -\ Harry\ Potter\ School\ of\ Magic.jfif"); /* Path to your background image */
-    background-size: cover; /* Cover the entire background */
-    background-position: center; /* Center the background image */
-    background-attachment: fixed; /* Fix the background image */
-    
-}
-/*
-nav {
-    background-color: #0074D9;
-    color: goldenrod;
-    padding: 15px;
+    font-family: 'Cinzel', serif; /* Updated font */
+    color: #FFD700; /* Gold for text */
+    background: #0f1727;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #19304a, #001c59);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #19304a, #001c59); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite; /* Background gradient animation */
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: goldenrod;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: goldenrod;
-}
-*/
 header {
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0; /* Increased padding for header */
     background-color: #002446; /* Medium blue for header */
+    animation: bounce 1s infinite; /* Bounce animation */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }
 
 h1 {
     font-size: 3em;
     color: #FFD700; /* Gold for card titles */
     text-shadow: 0 0 2px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700;
+    margin-bottom: 20px; /* Space below the header */
 }
 
 h2 {
     text-align: center;
-    margin: 20px 0;
+    margin: 40px 0 30px; /* Space above and below section titles */
     color: #FFD700; /* Gold for section titles */
     text-shadow: 0 0 2px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700; /* Glowing effect */
     padding: 10px; /* Padding for the title */
     border-radius: 5px; /* Rounded corners for the title */
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    backdrop-filter: blur(5px); /* Blur effect behind the text */
+    transform: translateY(-20px); /* Start above */
+    opacity: 0; /* Start invisible */
+    animation: slideIn 0.5s forwards; /* Slide in animation */
     margin-left: 550px;
     margin-right: 550px;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateY(0); /* Move to original position */
+        opacity: 1; /* Fade in */
+    }
 }
 
 .card-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 30px; /* Increased space between cards */
+    padding: 20px; /* Padding around the card container */
+    margin-bottom: 280px; /* Space below the card container */
 }
 
 .card {
-    background-color: #002446; /* Dark blue for cards */
+    perspective: 1000px; /* Enable 3D perspective */
+    width: 300px; /* Fixed width for cards */
+    transition: transform 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s; /* Smooth transition for flip effect */
+    transform-style: preserve-3d; /* Preserve 3D effect */
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg); /* Flip effect on hover */
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide back face when not visible */
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    width: 300px;
-    text-align: center;
-    transition: transform 0.3s;
+}
+
+.card-front {
+    background-color: #002446; /* Dark blue for front */
+}
+
+.card-back {
+    background-color: #003366; /* Darker blue for back */
+    color: #FFD700; /* Gold for text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform: rotateY(180deg); /* Rotate back face */
 }
 
 .card img {
     width: 100%;
     height: auto;
+    transition: transform 0.3s ease; /* Smooth zoom effect */
 }
 
 .card h3 {
     margin: 10px 0;
     color: #FFD700; /* Gold for card titles */
     text-shadow: 0 0 2px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700; /* Glowing effect */
-    padding: 10px; /* Padding for the title */
-    border-radius: 5px; /* Rounded corners for the title */
-    background-color: transparent; /* Fully transparent background */
 }
 
-/* Fully transparent description */
 .card p {
     padding: 10px;
     color: goldenrod; /* Gold for card descriptions */
-    border-radius: 5px; /* Rounded corners for the description */
-    background-color: transparent; /* Fully transparent background */
+}
+
+.card:hover img {
+    transform: scale(1.1); /* Zoom effect on image hover */
 }
 
 .card:hover {
-    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Shadow effect on hover */
+    transform: translateY(-5px) rotate(2deg); /* Lift and tilt effect on hover */
 }
 
 .slideshow-container {
@@ -119,6 +152,7 @@ h2 {
     height: 400px; /* Fixed height */
     margin: auto;
     overflow: hidden;
+    margin-bottom: 40px; /* Space below slideshow */
 }
 
 .mySlides {
@@ -130,6 +164,11 @@ h2 {
     height: 100%; /* Full height */
     object-fit: cover; /* Cover the container */
     border-radius: 10px;
+    transition: transform 0.3s ease; /* Smooth zoom effect */
+}
+
+.mySlides:hover img {
+    transform: scale(1.05); /* Zoom effect on image hover */
 }
 
 .fade {
@@ -137,12 +176,8 @@ h2 {
 }
 
 @keyframes fade {
-    from { opacity: 0.4; }
+    from { opacity: 0; }
     to { opacity: 1; }
-}
-
-.reverse {
-    direction: rtl; /* This will make the slides appear to slide in the opposite direction */
 }
 
 footer {
@@ -152,21 +187,57 @@ footer {
     color: #FFD700; /* Gold for card titles */
     bottom: 0;
     width: 100%;
+    margin-top: 40px; /* Space above footer */
 }
 
 footer p {
     margin: 0;
 }
-.slideshow-container {
-    position: relative;
-    width: 100%; /* Full width */
-    max-width: 800px; /* Maximum width */
-    height: 400px; /* Fixed height */
-    margin: auto;
-    overflow: hidden;
+
+/* Typewriter effect for titles */
+.typewriter {
+    display: inline-block;
+    overflow: hidden; /* Ensures the text is hidden */
+    white-space: nowrap; /* Prevents text wrapping */
+    border-right: 0.15em solid #FFD700; /* Creates a cursor effect */
+    animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite; /* Typewriter animation */
 }
-.mySlides img {
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    object-fit: cover; /* Cover the container */
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #FFD700; }
+}
+/* Snowfall Effect */
+.snow {
+    position: absolute;
+    width: 100%;
+    height: 200vh; /* Cover both sections */
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.snow span {
+    position: absolute;
+    display: block;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: snowfall linear infinite, moveRandom infinite alternate ease-in-out;
+}
+
+/* More Snowflakes */
+.snow span:nth-child(n) { width: 4px; height: 4px; animation-duration: 5s; }
+.snow span:nth-child(2n) { width: 6px; height: 6px; animation-duration: 7s; }
+.snow span:nth-child(3n) { width: 8px; height: 8px; animation-duration: 9s; }
+
+/* Falling Snow Effect */
+@keyframes snowfall {
+    0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
+    100% { transform: translateY(100vh) translateX(calc(50vw * (random() - 0.5))); opacity: 1; }
 }

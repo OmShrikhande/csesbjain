@@ -5,67 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Gallery</title>
     <link rel="stylesheet" href="/css/gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" />
 </head>
 <body>
-    <!-- <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#ieee">IEEE Events</a></li>
-            <li><a href="#sui">SUI Generis Events</a></li>
-            <li><a href="#colab">Colab Events</a></li>
-        </ul>   
-    </nav> -->
-
+    <div class="snow" id="snowContainer"></div>
     <header>
         <h1>Event Gallery</h1>
     </header>
 
     <!-- IEEE Previous Events Section -->
-    <section id="ieee">
+    <section id="ieee" data-aos="fade-up">
         <h2>IEEE Previous Events</h2>
         <div class="card-container">
-            <div class="card">
-                <img src="/assets/images/gallery/photo1.jpg" alt="IEEE Event 1">
-                <h3>Event Title 1</h3>
-                <p>Description of the event.</p>
+            <div class="card" data-aos="flip-left">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="/assets/images/gallery/photo1.jpg" alt="IEEE Event 1">
+                        <h3 class="typewriter">Event Title 1</h3>
+                        <p>Description of the event.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>More Info</h3>
+                        <p>Additional details about the event.</p>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <img src="/assets/images/gallery/photo2.jpg" alt="IEEE Event 2">
-                <h3>Event Title 2</h3>
-                <p>Description of the event.</p>
+            <div class="card" data-aos="flip-left">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="/assets/images/gallery/photo2.jpg" alt="IEEE Event 2">
+                        <h3 class="typewriter">Event Title 2</h3>
+                        <p>Description of the event.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>More Info</h3>
+                        <p>Additional details about the event.</p>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <img src="/assets/images/gallery/photo3.jpg" alt="IEEE Event 3">
-                <h3>Event Title 3</h3>
-                <p>Description of the event.</p>
+            <div class="card" data-aos="flip-left">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="/assets/images/gallery/photo3.jpg" alt="IEEE Event 3">
+                        <h3 class="typewriter">Event Title 3</h3>
+                        <p>Description of the event.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>More Info</h3>
+                        <p>Additional details about the event.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- SUI Generis Previous Events Section -->
-    <section id="sui">
+    <section id="sui" data-aos="fade-up">
         <h2>SUI Generis Previous Events</h2>
         <div class="card-container">
-            <div class="card">
-                <img src="/assets/images/gallery/photo1.jpg" alt="SUI Event 1">
-                <h3>Event Title 1</h3>
-                <p>Description of the event.</p>
+            <div class="card" data-aos="flip-left">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="/assets/images/gallery/photo1.jpg" alt="SUI Event 1">
+                        <h3 class="typewriter">Event Title 1</h3>
+                        <p>Description of the event.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>More Info</h3>
+                        <p>Additional details about the event.</p>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <img src="/assets/images/gallery/photo2.jpg" alt="SUI Event 2">
-                <h3>Event Title 2</h3>
-                <p>Description of the event.</p>
+            <div class="card" data-aos="flip-left">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="/assets/images/gallery/photo2.jpg" alt="SUI Event 2">
+                        <h3 class="typewriter">Event Title 2</h3>
+                        <p>Description of the event.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>More Info</h3>
+                        <p>Additional details about the event.</p>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <img src="/assets/images/gallery/photo3.jpg" alt="SUI Event 3">
-                <h3>Event Title 3</h3>
-                <p>Description of the event.</p>
+            <div class="card" data-aos="flip-left">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="/assets/images/gallery/photo3.jpg" alt="SUI Event 3">
+                        <h3 class="typewriter">Event Title 3</h3>
+                        <p>Description of the event.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>More Info</h3>
+                        <p>Additional details about the event.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Colab Events Section -->
-    <section id="colab">
+    <section id="colab" data-aos="fade-up">
         <h2>Colab Events</h2>
         <div class="slideshow-container">
             <div class="mySlides fade">
@@ -78,23 +119,43 @@
                 <img src="/assets/images/gallery/photo3.jpg" alt="Colab Event 3">
             </div>
         </div>
-        <!-- <div class="slideshow-container reverse">
-            <div class="mySlides fade">
-                <img src="/assets/images/gallery/photo3.jpg" alt="Colab Event 4">
-            </div>
-            <div class="mySlides fade">
-                <img src="/assets/images/gallery/photo2.jpg" alt="Colab Event 5">
-            </div>
-            <div class="mySlides fade">
-                <img src="/assets/images/gallery/photo1.jpg" alt="Colab Event 6">
-            </div>
-        </div> -->
     </section>
-    <br><br><br>
+
     <footer>
         <p>&copy; 2023 Your Name. All rights reserved.</p>
     </footer>
 
     <script src="/css/gallary.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <script>
+        AOS.init(); // Initialize AOS
+        const snowContainer = document.getElementById("snowContainer");
+    for (let i = 0; i < 50; i++) {  // Increased the number of snowflakes
+        let snowflake = document.createElement("span");
+        snowflake.style.left = `${Math.random() * 100}vw`;
+        snowflake.style.top = `${Math.random() * 100}vh`;
+        snowflake.style.animationDelay = `${Math.random() * 5}s`;
+        snowflake.style.animationDuration = `${Math.random() * 7 + 3}s`;
+        snowContainer.appendChild(snowflake);
+    }
+
+    // Mouse Attraction Effect
+    document.addEventListener("mousemove", (e) => {
+        const snowflakes = document.querySelectorAll(".snow span");
+        snowflakes.forEach(snowflake => {
+            let x = (e.clientX - window.innerWidth / 2) * 0.02;
+            let y = (e.clientY - window.innerHeight / 2) * 0.02;
+            snowflake.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 360}deg)`;
+        });
+    });
+
+    // Auto Scroll to Upcoming Events after 4 seconds
+    setTimeout(() => {
+        window.scrollTo({
+            top: document.getElementById("sxrilled").offsetTop,
+            behavior: "smooth"
+        });
+    }, 2500);
+    </script>
 </body>
 </html>
