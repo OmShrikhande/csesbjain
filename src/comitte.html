@@ -1,129 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSE Committee</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <style>
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSE Committee</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      /* Use a cleaner Unsplash image URL */
+      background-image: url("https://images.unsplash.com/photo-1563723976576-099d546e00bd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      font-family: 'Cinzel', serif;
+      min-height: 100vh;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(139, 0, 0, 0.1) 0%, transparent 30%);
+      pointer-events: none;
+    }
+    
+    .magical-card {
+      background: rgba(20, 12, 40, 0.575);
+      backdrop-filter: blur(10px);
+      border: 2px solid #c4a747;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .magical-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(196, 167, 71, 0.2);
+    }
+    
+    .magical-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ffd700, transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    /* Floating particles effect */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .magical-card::after {
+      content: '⚡';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      color: #ffd700;
+      opacity: 0.5;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .magical-button {
+      background: linear-gradient(45deg, #8b0000, #c4a747);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .magical-button::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #ffd700, #8b0000, #ffd700);
+      z-index: -1;
+      animation: border-animation 3s linear infinite;
+    }
+    
+    .magical-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px #ffd700;
+    }
+    
+    @keyframes border-animation {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .house-colors {
+      background: linear-gradient(135deg, #740001, #ae0001, #eeba30, #d3a625);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    /* Flying snitch animation */
+    .snitch {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(#ffd700, #c4a747);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1000;
+      animation: fly 15s linear infinite;
+      display: none;
+    }
+    
+    @keyframes fly {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(100vw, 50vh); }
+      50% { transform: translate(50vw, 100vh); }
+      75% { transform: translate(0, 50vh); }
+      100% { transform: translate(0, 0); }
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-white" >
-    <header class="bg-blue-600 text-white text-center p-6 text-3xl font-bold shadow-lg">CSE Committee</header>
-    
-    <div class="container mx-auto p-6">
-        <div class="space-y-8">
-            <!-- Committee 1  https://drive.google.com/file/d/1Ft3LuQKF4j4IJ3y2oogrgy4wq2po7MmA/view?usp=drive_link-->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in w-full">
-                <h2 class="text-2xl font-semibold text-blue-400">Technical Committee</h2>
-                <img src="logo1.png" alt="Technical Committee Logo" class="w-full h-32 object-contain mx-auto mt-2">
-                <img src="../assets/images/ieee cs comitee/my pic .jpg" alt="Head" class="w-40 h-40 rounded-full mx-auto mt-4 shadow-md">
-                <p class="text-center font-medium mt-2">Head: John Doe</p>
-                <p class="text-gray-400 text-sm mt-2">Handles all tech-related events and innovations.</p>
-                <h3 class="mt-4 font-semibold">Members:</h3>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div>
-                        <h4 class="font-semibold text-blue-300">Core Team</h4>
-                        <ul class="list-disc pl-5 text-gray-300">
-                            <li>Core Member 1</li>
-                            <li>Core Member 2</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-blue-300">Heads</h4>
-                        <ul class="list-disc pl-5 text-gray-300">
-                            <li>Head 1</li>
-                            <li>Head 2</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-blue-300">Co-Heads</h4>
-                        <ul class="list-disc pl-5 text-gray-300">
-                            <li>Co-Head 1</li>
-                            <li>Co-Head 2</li>
-                        </ul>
-                    </div>
-                </div>
-                <a href="committee-details.html?committee=technical" class="block bg-blue-500 text-white text-center mt-4 py-2 rounded-lg hover:bg-blue-600">More Info</a>
-            </div>
-            
-            <!-- Committee 2 -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in w-full">
-                <h2 class="text-2xl font-semibold text-blue-400">Cultural Committee</h2>
-                <img src="logo2.png" alt="Cultural Committee Logo" class="w-full h-32 object-contain mx-auto mt-2">
-                <img src="head2.jpg" alt="Head" class="w-40 h-40 rounded-full mx-auto mt-4 shadow-md">
-                <p class="text-center font-medium mt-2">Head: Jane Smith</p>
-                <p class="text-gray-400 text-sm mt-2">Organizes cultural events and student engagements.</p>
-                <h3 class="mt-4 font-semibold">Members:</h3>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div>
-                        <h4 class="font-semibold text-blue-300">Core Team</h4>
-                        <ul class="list-disc pl-5 text-gray-300">
-                            <li>Core Member A</li>
-                            <li>Core Member B</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-blue-300">Heads</h4>
-                        <ul class="list-disc pl-5 text-gray-300">
-                            <li>Head A</li>
-                            <li>Head B</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-blue-300">Co-Heads</h4>
-                        <ul class="list-disc pl-5 text-gray-300">
-                            <li>Co-Head A</li>
-                            <li>Co-Head B</li>
-                        </ul>
-                    </div>
-                </div>
-                <a href="committee-details.html?committee=cultural" class="block bg-blue-500 text-white text-center mt-4 py-2 rounded-lg hover:bg-blue-600">More Info</a>
-            </div>
-            
-            <!-- Committee 3 -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in w-full">
-                <h2 class="text-2xl font-semibold text-blue-400">Editorial Committee</h2>
-                <img src="logo3.png" alt="Editorial Committee Logo" class="w-full h-32 object-contain mx-auto mt-2">
-                <img src="head3.jpg" alt="Head" class="w-40 h-40 rounded-full mx-auto mt-4 shadow-md">
-                <p class="text-center font-medium mt-2">Head: Alice Brown</p>
-                <p class="text-gray-400 text-sm mt-2">Manages publications, newsletters, and reports.</p>
-                <h3 class="mt-4 font-semibold">Members:</h3>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div>
-                        <h4 class="font-semibold text-blue-300">Core Team</h4>
-                        <ul class="list-disc pl-5 text-gray-300">
-                            <li>Core Member X</li>
-                            <li>Core Member Y</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-blue-300">Heads</h4>
-                        <ul class="list-disc pl-5 text-gray-300">
-                            <li>Head X</li>
-                            <li>Head Y</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-blue-300">Co-Heads</h4>
-                        <ul class="list-disc pl-5 text-gray-300">
-                            <li>Co-Head X</li>
-                            <li>Co-Head Y</li>
-                        </ul>
-                    </div>
-                </div>
-                <a href="committee-details.html?committee=editorial" class="block bg-blue-500 text-white text-center mt-4 py-2 rounded-lg hover:bg-blue-600">More Info</a>
-            </div>
+<body>
+  <div class="snitch"></div>
+  <header class="text-center py-10 px-6 relative w-full bg-black bg-opacity-50 backdrop-blur-md shadow-lg">
+    <h1 class="text-6xl font-extrabold text-white tracking-wider drop-shadow-xl">
+        CSE Committees
+    </h1>
+    <p class="text-lg text-gray-300 mt-2">Empowering Innovation and Culture</p>
+</header>
+
+
+  
+  <div class="container mx-auto p-6">
+    <div class="space-y-8">
+      <!-- Committee 1 -->
+      <div class="magical-card p-6 rounded-lg shadow-lg fade-in w-full">
+        <h2 class="text-2xl font-semibold text-amber-400">Technical Committee</h2>
+        <img src="/api/placeholder/400/128" alt="Technical Committee Logo" class="w-full h-32 object-contain mx-auto mt-2">
+        <img src="/api/placeholder/160/160" alt="Head" class="w-40 h-40 rounded-full mx-auto mt-4 shadow-md border-2 border-amber-400">
+        <p class="text-center font-medium mt-2 text-amber-200">Head: John Doe</p>
+        <p class="text-amber-100/70 text-sm mt-2">Handles all tech-related events and innovations.</p>
+        <h3 class="mt-4 font-semibold text-amber-200">Members:</h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div>
+            <h4 class="font-semibold text-amber-400">Core Team</h4>
+            <ul class="list-disc pl-5 text-amber-200/80">
+              <li>Core Member 1</li>
+              <li>Core Member 2</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-amber-400">Heads</h4>
+            <ul class="list-disc pl-5 text-amber-200/80">
+              <li>Head 1</li>
+              <li>Head 2</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-amber-400">Co-Heads</h4>
+            <ul class="list-disc pl-5 text-amber-200/80">
+              <li>Co-Head 1</li>
+              <li>Co-Head 2</li>
+            </ul>
+          </div>
         </div>
+        <button onclick="redirectToDetails('technical')" class="block magical-button text-white text-center mt-4 py-2 rounded-lg w-full">
+          More Info
+        </button>
+      </div>
+      
+      <!-- Committee 2 -->
+      <div class="magical-card p-6 rounded-lg shadow-lg fade-in w-full">
+        <h2 class="text-2xl font-semibold text-amber-400">Cultural Committee</h2>
+        <img src="/api/placeholder/400/128" alt="Cultural Committee Logo" class="w-full h-32 object-contain mx-auto mt-2">
+        <img src="/api/placeholder/160/160" alt="Head" class="w-40 h-40 rounded-full mx-auto mt-4 shadow-md border-2 border-amber-400">
+        <p class="text-center font-medium mt-2 text-amber-200">Head: Jane Smith</p>
+        <p class="text-amber-100/70 text-sm mt-2">Organizes cultural events and student engagements.</p>
+        <h3 class="mt-4 font-semibold text-amber-200">Members:</h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div>
+            <h4 class="font-semibold text-amber-400">Core Team</h4>
+            <ul class="list-disc pl-5 text-amber-200/80">
+              <li>Core Member A</li>
+              <li>Core Member B</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-amber-400">Heads</h4>
+            <ul class="list-disc pl-5 text-amber-200/80">
+              <li>Head A</li>
+              <li>Head B</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-amber-400">Co-Heads</h4>
+            <ul class="list-disc pl-5 text-amber-200/80">
+              <li>Co-Head A</li>
+              <li>Co-Head B</li>
+            </ul>
+          </div>
+        </div>
+        <button onclick="redirectToDetails('cultural')" class="block magical-button text-white text-center mt-4 py-2 rounded-lg w-full">
+          More Info
+        </button>
+      </div>
+      
+      <!-- Committee 3 -->
+      <div class="magical-card p-6 rounded-lg shadow-lg fade-in w-full">
+        <h2 class="text-2xl font-semibold text-amber-400">Editorial Committee</h2>
+        <img src="/api/placeholder/400/128" alt="Editorial Committee Logo" class="w-full h-32 object-contain mx-auto mt-2">
+        <img src="/api/placeholder/160/160" alt="Head" class="w-40 h-40 rounded-full mx-auto mt-4 shadow-md border-2 border-amber-400">
+        <p class="text-center font-medium mt-2 text-amber-200">Head: Alice Brown</p>
+        <p class="text-amber-100/70 text-sm mt-2">Manages publications, newsletters, and reports.</p>
+        <h3 class="mt-4 font-semibold text-amber-200">Members:</h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div>
+            <h4 class="font-semibold text-amber-400">Core Team</h4>
+            <ul class="list-disc pl-5 text-amber-200/80">
+              <li>Core Member X</li>
+              <li>Core Member Y</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-amber-400">Heads</h4>
+            <ul class="list-disc pl-5 text-amber-200/80">
+              <li>Head X</li>
+              <li>Head Y</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-amber-400">Co-Heads</h4>
+            <ul class="list-disc pl-5 text-amber-200/80">
+              <li>Co-Head X</li>
+              <li>Co-Head Y</li>
+            </ul>
+          </div>
+        </div>
+        <button onclick="redirectToDetails('editorial')" class="block magical-button text-white text-center mt-4 py-2 rounded-lg w-full">
+          More Info
+        </button>
+      </div>
     </div>
-    
-    <script>
-        gsap.to(".fade-in", {opacity: 1, y: 0, duration: 1, stagger: 0.3, ease: "power2.out"});
-    </script>
+  </div>
+  
+  <script>
+    // Animation for cards
+    gsap.to(".fade-in", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      stagger: 0.4,
+      ease: "power2.out"
+    });
+  
+    // Redirect function for More Info buttons
+    function redirectToDetails(committee) {
+      window.location.href = `committee-details.html?committee=${committee}`;
+    }
+  
+    // Create and animate flying snitch
+    function createSnitch() {
+      const snitch = document.querySelector('.snitch');
+      snitch.style.display = 'block';
+      
+      // Random starting position
+      const startX = Math.random() * window.innerWidth;
+      const startY = Math.random() * window.innerHeight;
+      snitch.style.left = `${startX}px`;
+      snitch.style.top = `${startY}px`;
+    }
+  
+    // Initialize snitch animation after 2 seconds
+    setTimeout(createSnitch, 2000);
+  </script>
 </body>
 </html>

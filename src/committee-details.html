@@ -5,12 +5,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Committee Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.cdnjs.com/css2?family=Cinzel:wght@400;600;700&display=swap');
+    
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1629944970361-d9fc34988644?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: 'Cinzel', serif;
+            min-height: 100vh;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+    
+        /* Fade-in effect */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    
+        /* Floating animation for images */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+    
+        .magical-card {
+            background: rgba(20, 12, 40, 0.159);
+            backdrop-filter: blur(10px);
+            border: 2px solid #c4a747;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(196, 167, 71, 0.5);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+    
+        .magical-card:hover {
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+    
+        .magical-title {
+            background: linear-gradient(135deg, #740001, #ae0001, #eeba30, #d3a625);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 1.5s infinite alternate;
+        }
+    
+        /* Title glowing animation */
+        @keyframes glow {
+            from { text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.5); }
+            to { text-shadow: 2px 2px 20px rgba(255, 215, 0, 0.9); }
+        }
+    
+        .profile-image {
+            border: 3px solid #c4a747;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: float 3s infinite ease-in-out;
+        }
+    
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(196, 167, 71, 0.5);
+        }
+    
+        /* Pulsing glowing border */
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid #ffd700;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            opacity: 0;
+        }
+    
+        .profile-image:hover::after {
+            opacity: 1;
+        }
+    
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            70% { transform: scale(1.1); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+    
+        /* Shimmer effect on hover */
+        .role-title {
+            position: relative;
+            display: inline-block;
+            transition: color 0.3s ease-in-out;
+        }
+    
+        .role-title::before, .role-title::after {
+            content: '⚡';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffd700;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+    
+        .role-title::before { left: -25px; }
+        .role-title::after { right: -25px; }
+    
+        .role-title:hover {
+            color: #ffd700;
+            text-shadow: 0 0 10px #ffd700;
+        }
+    
+        .role-title:hover::before,
+        .role-title:hover::after {
+            opacity: 1;
+        }
+    
+        /* Button Glow Effect */
+        .magical-button {
+            background: linear-gradient(135deg, #b8860b, #ffcc00);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .magical-button::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            top: 0;
+            left: -100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: skewX(-30deg);
+            transition: left 0.5s ease-in-out;
+        }
+    
+        .magical-button:hover::before {
+            left: 100%;
+        }
+    
+        .magical-button:hover {
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            transform: scale(1.05);
+        }
+    </style>
+    
+    <button onclick="window.location.href='comitte.html'" class="magical-button">
+        Return to Main Hall
+    </button>
+    
 </head>
-<body class="bg-gray-900 text-white">
-    <header class="bg-blue-600 text-white text-center p-6 text-3xl font-bold shadow-lg">Committee Details</header>
+<body class="text-white">
+    <header class="text-center p-8">
+        <h1 class="text-4xl font-bold magical-title">Committee Details</h1>
+    </header>
     
     <div class="container mx-auto p-6 flex flex-col items-center">
-        <div id="committee-info" class="w-full flex flex-col items-center space-y-8">
+        <div id="committee-info" class="w-full flex flex-col items-center space-y-8 magical-card p-8 rounded-lg">
             <!-- Content will be dynamically loaded here -->
         </div>
     </div>
@@ -22,17 +185,50 @@
         const committees = {
             technical: {
                 name: "Technical Committee",
-                mentor: { name: "Dr. Mentor", img: "mentor.jpg" },
-                chairperson: { name: "Alex Johnson", img: "chairperson.jpg" },
-                treasurer: { name: "Sarah Lee", img: "treasurer.jpg" },
-                secretary: { name: "Michael Brown", img: "secretary.jpg" },
+                mentor: { name: "Dr. Alan Turing", img: "/api/placeholder/128/128" },
+                chairperson: { name: "Alex Johnson", img: "/api/placeholder/128/128" },
+                treasurer: { name: "Sarah Lee", img: "/api/placeholder/128/128" },
+                secretary: { name: "Michael Brown", img: "/api/placeholder/128/128" },
                 heads: [
-                    { name: "John Doe", img: "head1.jpg" },
-                    { name: "Emily White", img: "head2.jpg" }
+                    { name: "John Doe", img: "/api/placeholder/96/96" },
+                    { name: "Emily White", img: "/api/placeholder/96/96" }
                 ],
                 coHeads: [
-                    { name: "Jane Roe", img: "cohead1.jpg" },
-                    { name: "Daniel Green", img: "cohead2.jpg" }
+                    { name: "Jane Roe", img: "/api/placeholder/96/96" },
+                    { name: "Daniel Green", img: "/api/placeholder/96/96" },
+                    { name: "Jaane Roe", img: "/api/placeholder/96/96" },
+                    { name: "Jaane Roe", img: "/api/placeholder/96/96" },
+                    { name: "Jaane Roe", img: "/api/placeholder/96/96" },
+                ]
+            },
+            cultural: {
+                name: "Cultural Committee",
+                mentor: { name: "Prof. Maria Garcia", img: "/api/placeholder/128/128" },
+                chairperson: { name: "David Wilson", img: "/api/placeholder/128/128" },
+                treasurer: { name: "Lisa Chen", img: "/api/placeholder/128/128" },
+                secretary: { name: "Robert Taylor", img: "/api/placeholder/128/128" },
+                heads: [
+                    { name: "Sofia Rodriguez", img: "/api/placeholder/96/96" },
+                    { name: "James Miller", img: "/api/placeholder/96/96" }
+                ],
+                coHeads: [
+                    { name: "Emma Davis", img: "/api/placeholder/96/96" },
+                    { name: "Thomas Anderson", img: "/api/placeholder/96/96" }
+                ]
+            },
+            editorial: {
+                name: "Editorial Committee",
+                mentor: { name: "Dr. Elizabeth Wright", img: "/api/placeholder/128/128" },
+                chairperson: { name: "William Turner", img: "/api/placeholder/128/128" },
+                treasurer: { name: "Olivia Martinez", img: "/api/placeholder/128/128" },
+                secretary: { name: "Christopher Lee", img: "/api/placeholder/128/128" },
+                heads: [
+                    { name: "Isabella Clark", img: "/api/placeholder/96/96" },
+                    { name: "Benjamin Moore", img: "/api/placeholder/96/96" }
+                ],
+                coHeads: [
+                    { name: "Victoria King", img: "/api/placeholder/96/96" },
+                    { name: "Nathan Scott", img: "/api/placeholder/96/96" }
                 ]
             }
         };
@@ -40,52 +236,64 @@
         const committeeData = committees[committee];
         if (committeeData) {
             document.getElementById("committee-info").innerHTML = `
-                <h2 class="text-3xl font-bold text-blue-400 text-center">${committeeData.name}</h2>
+                <h2 class="text-3xl font-bold magical-title mb-8">${committeeData.name}</h2>
                 <div class="flex flex-col items-center mt-6">
-                    <h3 class="text-xl font-semibold">Mentor</h3>
-                    <img src="${committeeData.mentor.img}" alt="${committeeData.mentor.name}" class="w-32 h-32 rounded-full mt-2">
-                    <p class="mt-2">${committeeData.mentor.name}</p>
+                    <h3 class="text-xl font-semibold text-amber-400 role-title">Mentor</h3>
+                    <img src="${committeeData.mentor.img}" alt="${committeeData.mentor.name}" class="w-32 h-32 rounded-full mt-2 profile-image">
+                    <p class="mt-2 text-amber-200">${committeeData.mentor.name}</p>
                 </div>
-                <div class="flex justify-center space-x-12 mt-6">
+                <div class="flex flex-wrap justify-center gap-12 mt-6">
                     <div class="text-center">
-                        <h3 class="text-xl font-semibold">Chairperson</h3>
-                        <img src="${committeeData.chairperson.img}" alt="${committeeData.chairperson.name}" class="w-32 h-32 rounded-full mt-2">
-                        <p class="mt-2">${committeeData.chairperson.name}</p>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-xl font-semibold">Treasurer</h3>
-                        <img src="${committeeData.treasurer.img}" alt="${committeeData.treasurer.name}" class="w-32 h-32 rounded-full mt-2">
-                        <p class="mt-2">${committeeData.treasurer.name}</p>
+                        <h3 class="text-xl font-semibold text-amber-400 role-title">Chairperson</h3>
+                        <img src="${committeeData.chairperson.img}" alt="${committeeData.chairperson.name}" class="w-32 h-32 rounded-full mt-2 profile-image">
+                        <p class="mt-2 text-amber-200">${committeeData.chairperson.name}</p>
                     </div>
                     <div class="text-center">
-                        <h3 class="text-xl font-semibold">Secretary</h3>
-                        <img src="${committeeData.secretary.img}" alt="${committeeData.secretary.name}" class="w-32 h-32 rounded-full mt-2">
-                        <p class="mt-2">${committeeData.secretary.name}</p>
+                        <h3 class="text-xl font-semibold text-amber-400 role-title">Treasurer</h3>
+                        <img src="${committeeData.treasurer.img}" alt="${committeeData.treasurer.name}" class="w-32 h-32 rounded-full mt-2 profile-image">
+                        <p class="mt-2 text-amber-200">${committeeData.treasurer.name}</p>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-amber-400 role-title">Secretary</h3>
+                        <img src="${committeeData.secretary.img}" alt="${committeeData.secretary.name}" class="w-32 h-32 rounded-full mt-2 profile-image">
+                        <p class="mt-2 text-amber-200">${committeeData.secretary.name}</p>
                     </div>
                 </div>
-                <div class="flex justify-center mt-10">
-                    <div class="w-1/2 text-center">
-                        <h3 class="text-xl font-semibold">Heads</h3>
-                        ${committeeData.heads.map(head => `
-                            <div class="flex flex-col items-center mt-4">
-                                <img src="${head.img}" alt="${head.name}" class="w-24 h-24 rounded-full">
-                                <p class="mt-2">${head.name}</p>
-                            </div>
-                        `).join('')}
+                <div class="flex flex-wrap justify-center gap-12 mt-10 w-full">
+                    <div class="text-center flex-1">
+                        <h3 class="text-xl font-semibold text-amber-400 role-title">Heads</h3>
+                        <div class="flex flex-wrap justify-center gap-8 mt-4">
+                            ${committeeData.heads.map(head => `
+                                <div class="flex flex-col items-center">
+                                    <img src="${head.img}" alt="${head.name}" class="w-24 h-24 rounded-full profile-image">
+                                    <p class="mt-2 text-amber-200">${head.name}</p>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
-                    <div class="w-1/2 text-center">
-                        <h3 class="text-xl font-semibold">Co-Heads</h3>
-                        ${committeeData.coHeads.map(coHead => `
-                            <div class="flex flex-col items-center mt-4">
-                                <img src="${coHead.img}" alt="${coHead.name}" class="w-24 h-24 rounded-full">
-                                <p class="mt-2">${coHead.name}</p>
-                            </div>
-                        `).join('')}
+                    <div class="text-center flex-1">
+                        <h3 class="text-xl font-semibold text-amber-400 role-title">Co-Heads</h3>
+                        <div class="flex flex-wrap justify-center gap-8 mt-4">
+                            ${committeeData.coHeads.map(coHead => `
+                                <div class="flex flex-col items-center">
+                                    <img src="${coHead.img}" alt="${coHead.name}" class="w-24 h-24 rounded-full profile-image">
+                                    <p class="mt-2 text-amber-200">${coHead.name}</p>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                 </div>
+                <button onclick="window.location.href='comitte.html'" class="mt-8 px-6 py-2 bg-gradient-to-r from-amber-600 to-amber-800 hover:from-amber-700 hover:to-amber-900 text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/50">
+                    Return to Main Hall
+                </button>
             `;
         } else {
-            document.getElementById("committee-info").innerHTML = `<p class="text-center text-red-500">Committee not found</p>`;
+            document.getElementById("committee-info").innerHTML = `
+                <p class="text-center text-red-500 text-xl">This chamber has been sealed by the Ministry of Magic</p>
+                <button onclick="window.location.href='comitte.html'" class="mt-4 px-6 py-2 bg-gradient-to-r from-amber-600 to-amber-800 hover:from-amber-700 hover:to-amber-900 text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/50">
+                    Return to Main Hall
+                </button>
+            `;
         }
     </script>
 </body>
