@@ -5,13 +5,18 @@
     margin: 0;
     padding: 0;
 }
-
+@font-face {
+    font-family: 'harryb';
+    src: url(./../assets/fonts/HarryP.ttf);
+    
+  }
 body {
-    font-family: 'Cinzel', serif; /* Updated font */
+    font-family:'harryb';
+    font-weight: 100;
+    font-size: x-large;
     color: #FFD700; /* Gold for text */
-    background: #0f1727;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #19304a, #001c59);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #19304a, #001c59); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: #0f1727;  fallback for old browsers */
+    background: linear-gradient(to bottom, #0c0c33, #000000);
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite; /* Background gradient animation */
 }
@@ -25,7 +30,7 @@ background: linear-gradient(to bottom, #19304a, #001c59); /* W3C, IE 10+/ Edge, 
 header {
     text-align: center;
     padding: 20px 0; /* Increased padding for header */
-    background-color: #002446; /* Medium blue for header */
+    background: linear-gradient(to bottom, #0c0c33, #000000);
     animation: bounce 1s infinite; /* Bounce animation */
 }
 
@@ -44,15 +49,13 @@ header {
 h1 {
     font-size: 3em;
     color: #FFD700; /* Gold for card titles */
-    text-shadow: 0 0 2px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700;
     margin-bottom: 20px; /* Space below the header */
 }
 
 h2 {
     text-align: center;
-    margin: 40px 0 30px; /* Space above and below section titles */
+    margin: 40px 0 40px; /* Space above and below section titles */
     color: #FFD700; /* Gold for section titles */
-    text-shadow: 0 0 2px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700; /* Glowing effect */
     padding: 10px; /* Padding for the title */
     border-radius: 5px; /* Rounded corners for the title */
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
@@ -75,7 +78,7 @@ h2 {
     justify-content: center;
     gap: 30px; /* Increased space between cards */
     padding: 20px; /* Padding around the card container */
-    margin-bottom: 280px; /* Space below the card container */
+    margin-bottom: 520px; /* Space below the card container */
 }
 
 .card {
@@ -128,7 +131,6 @@ h2 {
 .card h3 {
     margin: 10px 0;
     color: #FFD700; /* Gold for card titles */
-    text-shadow: 0 0 2px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700; /* Glowing effect */
 }
 
 .card p {
@@ -148,8 +150,8 @@ h2 {
 .slideshow-container {
     position: relative;
     width: 100%; /* Full width */
-    max-width: 800px; /* Maximum width */
-    height: 400px; /* Fixed height */
+    max-width: 1000px; /* Maximum width */
+    height: 800px; /* Fixed height */
     margin: auto;
     overflow: hidden;
     margin-bottom: 40px; /* Space below slideshow */
@@ -183,7 +185,7 @@ h2 {
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #002446; /* Medium blue for footer */
+    background: linear-gradient(to bottom, #0c0c33, #000000);
     color: #FFD700; /* Gold for card titles */
     bottom: 0;
     width: 100%;
