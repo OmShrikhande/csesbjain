@@ -10,7 +10,7 @@
   <style>
     body {
       /* Use a cleaner Unsplash image URL */
-      background-image: url("https://images.unsplash.com/photo-1563723976576-099d546e00bd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      background-image: url("https://images.unsplash.com/photo-1600189261867-30e5ffe7b8da?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
       background-size: cover;
       background-attachment: fixed;
       background-position: center;
@@ -30,6 +30,17 @@
         radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 30%),
         radial-gradient(circle at 80% 80%, rgba(139, 0, 0, 0.1) 0%, transparent 30%);
       pointer-events: none;
+    }
+    .zoom {
+    
+  transform :scale(3.0);
+}
+
+
+
+    @font-face {
+      font-family: 'harryb';
+      src: url(./../assets/fonts/HarryP.ttf);
     }
     
     .magical-card {
@@ -141,49 +152,66 @@
       75% { transform: translate(0, 50vh); }
       100% { transform: translate(0, 0); }
     }
+    
+    /* Snowflake Animation Styles */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #fff;
+      font-size: 1rem;
+      user-select: none;
+      z-index: 9999;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
   </style>
 </head>
 <body>
   <div class="snitch"></div>
-  <header class="text-center py-10 px-6 relative w-full bg-black bg-opacity-50 backdrop-blur-md shadow-lg">
-    <h1 class="text-6xl font-extrabold text-white tracking-wider drop-shadow-xl">
-        CSE Committees
+  <header class="text-center py-10 px-6 relative w-full bg-black bg-opacity-70 backdrop-blur-md shadow-lg">
+    <h1 class="text-7xl font-extrabold tracking-wider drop-shadow-xl text-amber-400" style="font-family: harryb; word-spacing: 2px; letter-spacing: 10px;">
+      CSE Committies
     </h1>
     <p class="text-lg text-gray-300 mt-2">Empowering Innovation and Culture</p>
-</header>
-
-
+  </header>
   
   <div class="container mx-auto p-6">
-    <div class="space-y-8">
+    <div class="space-y-8" >
       <!-- Committee 1 -->
       <div class="magical-card p-6 rounded-lg shadow-lg fade-in w-full">
-        <h2 class="text-2xl font-semibold text-amber-400">Technical Committee</h2>
-        <img src="/api/placeholder/400/128" alt="Technical Committee Logo" class="w-full h-32 object-contain mx-auto mt-2">
-        <img src="/api/placeholder/160/160" alt="Head" class="w-40 h-40 rounded-full mx-auto mt-4 shadow-md border-2 border-amber-400">
-        <p class="text-center font-medium mt-2 text-amber-200">Head: John Doe</p>
+        <h2 class="text-2xl font-semibold text-amber-400">IEEE Computer Society</h2>
+        <img src="../assets/ieee.png" alt="Technical Committee Logo" class="w-full h-48 object-contain mx-auto mt-2 zoom">
+
+        <img src="../assets/images/ieee cs comitee/my pic .jpg" alt="Head" class="w-40 h-40 rounded-full mx-auto mt-4 shadow-md border-2 border-amber-400 ">
+        <p class="text-center font-medium mt-2 text-amber-200">Chairperson: Sahil Budhe</p>
         <p class="text-amber-100/70 text-sm mt-2">Handles all tech-related events and innovations.</p>
-        <h3 class="mt-4 font-semibold text-amber-200">Members:</h3>
+        <h3 class="mt-4 font-semibold text-amber-200">Team :</h3>
         <div class="grid md:grid-cols-3 gap-4">
           <div>
-            <h4 class="font-semibold text-amber-400">Core Team</h4>
+            <h4 class="font-semibold text-amber-400">Vice-Chairperson</h4>
             <ul class="list-disc pl-5 text-amber-200/80">
-              <li>Core Member 1</li>
-              <li>Core Member 2</li>
+              <li>Devang Katarkar</li>
+              
             </ul>
           </div>
           <div>
-            <h4 class="font-semibold text-amber-400">Heads</h4>
+            <h4 class="font-semibold text-amber-400">Treasurer</h4>
             <ul class="list-disc pl-5 text-amber-200/80">
-              <li>Head 1</li>
-              <li>Head 2</li>
+              <li>Rohit Beri</li>
+              
             </ul>
           </div>
           <div>
-            <h4 class="font-semibold text-amber-400">Co-Heads</h4>
+            <h4 class="font-semibold text-amber-400">Secretary</h4>
             <ul class="list-disc pl-5 text-amber-200/80">
-              <li>Co-Head 1</li>
-              <li>Co-Head 2</li>
+              <li>Soumya Gosalia</li>
+              
             </ul>
           </div>
         </div>
@@ -194,32 +222,32 @@
       
       <!-- Committee 2 -->
       <div class="magical-card p-6 rounded-lg shadow-lg fade-in w-full">
-        <h2 class="text-2xl font-semibold text-amber-400">Cultural Committee</h2>
-        <img src="/api/placeholder/400/128" alt="Cultural Committee Logo" class="w-full h-32 object-contain mx-auto mt-2">
+        <h2 class="text-2xl font-semibold text-amber-400">suiGeneris</h2>
+        <img src="../assets/sui.png" alt="Cultural Committee Logo" class="w-full h-32 object-contain mx-auto mt-2 zoom">
         <img src="/api/placeholder/160/160" alt="Head" class="w-40 h-40 rounded-full mx-auto mt-4 shadow-md border-2 border-amber-400">
-        <p class="text-center font-medium mt-2 text-amber-200">Head: Jane Smith</p>
+        <p class="text-center font-medium mt-2 text-amber-200">President : Ayush Jaiswal</p>
         <p class="text-amber-100/70 text-sm mt-2">Organizes cultural events and student engagements.</p>
-        <h3 class="mt-4 font-semibold text-amber-200">Members:</h3>
+        <h3 class="mt-4 font-semibold text-amber-200">Team:</h3>
         <div class="grid md:grid-cols-3 gap-4">
           <div>
-            <h4 class="font-semibold text-amber-400">Core Team</h4>
+            <h4 class="font-semibold text-amber-400">Vice-President</h4>
             <ul class="list-disc pl-5 text-amber-200/80">
-              <li>Core Member A</li>
-              <li>Core Member B</li>
+              <li>Varun Bhoyar</li>
+          
             </ul>
           </div>
           <div>
-            <h4 class="font-semibold text-amber-400">Heads</h4>
+            <h4 class="font-semibold text-amber-400">Secretary</h4>
             <ul class="list-disc pl-5 text-amber-200/80">
-              <li>Head A</li>
-              <li>Head B</li>
+              <li>Nakshatra Nimbalkar</li>
+              
             </ul>
           </div>
           <div>
-            <h4 class="font-semibold text-amber-400">Co-Heads</h4>
+            <h4 class="font-semibold text-amber-400">Treasurer</h4>
             <ul class="list-disc pl-5 text-amber-200/80">
-              <li>Co-Head A</li>
-              <li>Co-Head B</li>
+              <li>Alok Singh</li>
+              
             </ul>
           </div>
         </div>
@@ -230,18 +258,18 @@
       
       <!-- Committee 3 -->
       <div class="magical-card p-6 rounded-lg shadow-lg fade-in w-full">
-        <h2 class="text-2xl font-semibold text-amber-400">Editorial Committee</h2>
-        <img src="/api/placeholder/400/128" alt="Editorial Committee Logo" class="w-full h-32 object-contain mx-auto mt-2">
+        <h2 class="text-2xl font-semibold text-amber-400">AlgoZenith</h2>
+        <img src="../assets/algo.png" alt="Editorial Committee Logo" class="w-full h-32 object-contain mx-auto mt-2 zoom">
         <img src="/api/placeholder/160/160" alt="Head" class="w-40 h-40 rounded-full mx-auto mt-4 shadow-md border-2 border-amber-400">
-        <p class="text-center font-medium mt-2 text-amber-200">Head: Alice Brown</p>
-        <p class="text-amber-100/70 text-sm mt-2">Manages publications, newsletters, and reports.</p>
+        <p class="text-center font-medium mt-2 text-amber-200">Lead: Harshal Honde</p>
+        <p class="text-amber-100/70 text-sm mt-2">New Technical Committee</p>
         <h3 class="mt-4 font-semibold text-amber-200">Members:</h3>
         <div class="grid md:grid-cols-3 gap-4">
           <div>
             <h4 class="font-semibold text-amber-400">Core Team</h4>
             <ul class="list-disc pl-5 text-amber-200/80">
-              <li>Core Member X</li>
-              <li>Core Member Y</li>
+              <li>Isha Gothwad</li>
+              
             </ul>
           </div>
           <div>
@@ -265,6 +293,8 @@
       </div>
     </div>
   </div>
+  
+  <!-- Snowflakes container will be automatically appended by JS -->
   
   <script>
     // Animation for cards
@@ -295,6 +325,27 @@
   
     // Initialize snitch animation after 2 seconds
     setTimeout(createSnitch, 2000);
+    
+    // Create Snowflakes Animation
+    function createSnowflakes() {
+      const snowflakeCount = 50; // Adjust the number as needed
+      for (let i = 0; i < snowflakeCount; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.textContent = '❄';
+        // Random horizontal position
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        // Random animation delay and duration
+        const delay = Math.random() * 5;
+        const duration = 5 + Math.random() * 5; // 5-10 seconds
+        snowflake.style.animationDelay = `${delay}s`;
+        snowflake.style.animationDuration = `${duration}s`;
+        document.body.appendChild(snowflake);
+      }
+    }
+    
+    // Create snowflakes on page load
+    window.addEventListener('load', createSnowflakes);
   </script>
 </body>
 </html>
