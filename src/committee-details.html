@@ -1,92 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Committee Details</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Committee Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.cdnjs.com/css2?family=Cinzel:wght@400;600;700&display=swap');
+    
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                  url('https://images.unsplash.com/photo-1629944970361-d9fc34988644?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      font-family: 'Cinzel', serif;
+      /* min-height: 100vh; */
+      animation: fadeIn 1.5s ease-in-out;
+      position: relative;
+      overflow: hidden;
+      overflow: auto; 
+    }
+    @font-face {
+    font-family: 'harryb';
+    src: url(./../assets/fonts/HarryP.ttf);
+    
+  }
+    /* Fade-in effect */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Floating animation for images */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .magical-card {
+      background: rgba(20, 12, 40, 0.159);
+      backdrop-filter: blur(10px);
+      border: 2px solid #c4a747;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(196, 167, 71, 0.5);
+      transition: box-shadow 0.3s ease-in-out;
+    }
+    
+    .magical-card:hover {
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+    }
+    
+    .magical-title {
+      background: linear-gradient(135deg, #740001, #ae0001, #eeba30, #d3a625);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: glow 1.5s infinite alternate;
+    }
+    
+    /* Title glowing animation */
+    @keyframes glow {
+      from { text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.5); }
+      to { text-shadow: 2px 2px 20px rgba(255, 215, 0, 0.9); }
+    }
+    
+    .profile-image {
+      border: 3px solid #c4a747;
+      transition: all 0.3s ease;
+      position: relative;
+      animation: float 3s infinite ease-in-out;
+    }
+    
+    .profile-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(196, 167, 71, 0.5);
+    }
+    
+    /* Pulsing glowing border */
+    .profile-image::after {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 2px solid #ffd700;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      opacity: 0;
+    }
+    
+    .profile-image:hover::after {
+      opacity: 1;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      70% { transform: scale(1.1); opacity: 0; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+    
+    /* Shimmer effect on hover */
+    .role-title {
+      position: relative;
+      display: inline-block;
+      transition: color 0.3s ease-in-out;
+    }
+    
+    .role-title::before, .role-title::after {
+      content: '⚡';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ffd700;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .role-title::before { left: -25px; }
+    .role-title::after { right: -25px; }
+    
+    .role-title:hover {
+      color: #ffd700;
+      text-shadow: 0 0 10px #ffd700;
+    }
+    
+    .role-title:hover::before,
+    .role-title:hover::after {
+      opacity: 1;
+    }
+    
+    /* Button Glow Effect */
+    .magical-button {
+      background: linear-gradient(135deg, #b8860b, #ffcc00);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .magical-button::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      top: 0;
+      left: -100%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: skewX(-30deg);
+      transition: left 0.5s ease-in-out;
+    }
+    
+    .magical-button:hover::before {
+      left: 100%;
+    }
+    
+    .magical-button:hover {
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+      transform: scale(1.05);
+    }
+    
+    /* Snowflake Animation Styles */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #fff;
+      font-size: 1rem;
+      user-select: none;
+      z-index: 9999;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+  </style>
+  
+  <button onclick="window.location.href='comitte.html'" class="magical-button">
+    Return to Main Hall
+  </button>
+  
 </head>
-<body class="bg-gray-900 text-white">
-    <header class="bg-blue-600 text-white text-center p-6 text-3xl font-bold shadow-lg">Committee Details</header>
-    
-    <div class="container mx-auto p-6 flex flex-col items-center">
-        <div id="committee-info" class="w-full flex flex-col items-center space-y-8">
-            <!-- Content will be dynamically loaded here -->
-        </div>
+<body>
+  <header class="text-center py-10 px-6 relative w-full bg-opacity-70 backdrop-blur-md shadow-lg">
+    <h1 class="text-7xl tracking-wider drop-shadow-xl text-amber-400" style="font-family: harryb; word-spacing: 2px; letter-spacing: 10px;">
+        Committee Details
+      </h1>
+  </header>
+  
+  <div class="container mx-auto p-6 flex flex-col items-center">
+    <div id="committee-info" class="w-full flex flex-col items-center space-y-8 magical-card p-8 rounded-lg">
+      <!-- Content will be dynamically loaded here -->
     </div>
+  </div>
+  
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const committee = urlParams.get('committee');
     
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const committee = urlParams.get('committee');
+    const committees = {
+      technical: {
+        name: "IEEE CS Chapter",
+        mentor: { name: "Amanpreet Singh Ossan", img: "https://media.licdn.com/dms/image/v2/D4D03AQG0yJkiA1MiwA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1728938683301?e=1745452800&v=beta&t=iJIufxJ44nNYoon-Zq0QezZewH3nBzxtvBJtUmEn52A" },
+        chairperson: { name: "Sahil Budhe", img: "https://media.licdn.com/dms/image/v2/D5635AQFdXXbFAhmk1Q/profile-framedphoto-shrink_400_400/profile-framedphoto-shrink_400_400/0/1721286769052?e=1740394800&v=beta&t=-ltzrKaBoRU-ay4z-8H3c2I26DHWNhC8TYnNau_ZqfM" },
+        treasurer: { name: "Rohit Beri", img: "https://media.licdn.com/dms/image/v2/D5603AQEScRuJd-KeCA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1726940766909?e=1745452800&v=beta&t=vzCW3KUx1mXmDMfsKf5zCSYv7yVoUOm4yVhhBS0bfvE" },
+        secretary: { name: "Soumya Gosalia", img: "https://media.licdn.com/dms/image/v2/D5635AQG1ImjeZgYV7A/profile-framedphoto-shrink_400_400/profile-framedphoto-shrink_400_400/0/1737896792209?e=1740398400&v=beta&t=W4bAMPdYS_hX6K5NBVASf_CEmz_VsFcXvq_SaYBb-1w" },
         
-        const committees = {
-            technical: {
-                name: "Technical Committee",
-                mentor: { name: "Dr. Mentor", img: "mentor.jpg" },
-                chairperson: { name: "Alex Johnson", img: "chairperson.jpg" },
-                treasurer: { name: "Sarah Lee", img: "treasurer.jpg" },
-                secretary: { name: "Michael Brown", img: "secretary.jpg" },
-                heads: [
-                    { name: "John Doe", img: "head1.jpg" },
-                    { name: "Emily White", img: "head2.jpg" }
-                ],
-                coHeads: [
-                    { name: "Jane Roe", img: "cohead1.jpg" },
-                    { name: "Daniel Green", img: "cohead2.jpg" }
-                ]
-            }
-        };
-        
-        const committeeData = committees[committee];
-        if (committeeData) {
-            document.getElementById("committee-info").innerHTML = `
-                <h2 class="text-3xl font-bold text-blue-400 text-center">${committeeData.name}</h2>
-                <div class="flex flex-col items-center mt-6">
-                    <h3 class="text-xl font-semibold">Mentor</h3>
-                    <img src="${committeeData.mentor.img}" alt="${committeeData.mentor.name}" class="w-32 h-32 rounded-full mt-2">
-                    <p class="mt-2">${committeeData.mentor.name}</p>
+        heads: [
+          { name: "Om Shrikhande", img: "https://media.licdn.com/dms/image/v2/D5635AQF0_fD_V2lA7A/profile-framedphoto-shrink_100_100/profile-framedphoto-shrink_100_100/0/1720464515173?e=1740398400&v=beta&t=aFyzvMQArBJHr8mF6f6K7En2hH9A_5hV2IvIlvcjfIs" },
+          { name: "Atharva Shinde", img: "https://media.licdn.com/dms/image/v2/D4D03AQHDPR9fddKNtQ/profile-displayphoto-shrink_100_100/B4DZRgiS.YHcAU-/0/1736786391783?e=1745452800&v=beta&t=gYSHRxiaKy6bY417_-ob4eUQk10-oZWS2i-XQJ7YRnQ" },
+          { name: "Pranjali Jibhkate", img: "https://media.licdn.com/dms/image/v2/D4D03AQEZdV7lYOH6Kw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1718385609394?e=1745452800&v=beta&t=H_kovRxHN4y7uLHU5cfyDu8aV-4VixRmf8YZkubT4qg" }, 
+          { name: "Mahima Dhote", img: "/api/placeholder/96/96" },
+          { name: "Srushti Mohadikar", img: "/api/placeholder/96/96" },
+          { name: "Rutuj Ghungrud", img: "/api/placeholder/96/96" },
+          { name: "Keyuri Bhuptani", img: "/api/placeholder/96/96" }, 
+          { name: "Karan Prajapati", img: "/api/placeholder/96/96" },
+
+        ],
+        coHeads: [
+        { name: "Devang Katarkar", img: "/api/placeholder/96/96" },
+          { name: "Ansh Tripathi", img: "/api/placeholder/96/96" },
+          { name: "Naman Udapure", img: "/api/placeholder/96/96" },
+          { name: "Akshara Bhide", img: "/api/placeholder/96/96" },
+          { name: "Sohail Khan", img: "/api/placeholder/96/96" },
+          { name: "Sanket Punwatkar", img: "https://media.licdn.com/dms/image/v2/D5603AQEOFmCnljSBaw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1725270641111?e=1745452800&v=beta&t=iLzvXxEsuvFnLID9Cm9P6J0xO0ZBXN5859BFu5oDAqo" },
+          { name: "Keshav Nabira", img: "/api/placeholder/96/96" },
+          { name: "Himanshu Makhe", img: "/api/placeholder/96/96" },
+          { name: "Harshita Patle", img: "/api/placeholder/96/96" },
+          { name: "Maliha Khan", img: "/api/placeholder/96/96" },
+          { name: "Sukriti Tiwari", img: "/api/placeholder/96/96" },
+          { name: "Unnati Dharpure", img: "/api/placeholder/96/96" }
+        ]
+      },
+      cultural: {
+        name: "SuiGeneris Forum",
+        mentor: { name: "Ketki Raut", img: "https://media.licdn.com/dms/image/v2/D4D03AQH3JGNfqfzizw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1731411291007?e=1745452800&v=beta&t=OjBcPoQdp0iSfzxlTfFjmu80nDbhil67YPlWvyXfiek" },
+        chairperson: { name: "David Wilson", img: "/api/placeholder/128/128" },
+        treasurer: { name: "Lisa Chen", img: "/api/placeholder/128/128" },
+        secretary: { name: "Robert Taylor", img: "/api/placeholder/128/128" },
+        heads: [
+          { name: "Sofia Rodriguez", img: "/api/placeholder/96/96" },
+          { name: "James Miller", img: "/api/placeholder/96/96" }
+        ],
+        coHeads: [
+          { name: "Emma Davis", img: "/api/placeholder/96/96" },
+          { name: "Thomas Anderson", img: "/api/placeholder/96/96" }
+        ]
+      },
+      editorial: {
+        name: "AlgoZenith SBJIT Chapter",
+        mentor: { name: "Dr. Elizabeth Wright", img: "/api/placeholder/128/128" },
+        chairperson: { name: "William Turner", img: "/api/placeholder/128/128" },
+        treasurer: { name: "Olivia Martinez", img: "/api/placeholder/128/128" },
+        secretary: { name: "Christopher Lee", img: "/api/placeholder/128/128" },
+        heads: [
+          { name: "Isabella Clark", img: "/api/placeholder/96/96" },
+          { name: "Benjamin Moore", img: "/api/placeholder/96/96" }
+        ],
+        coHeads: [
+          { name: "Victoria King", img: "/api/placeholder/96/96" },
+          { name: "Nathan Scott", img: "/api/placeholder/96/96" }
+        ]
+      }
+    };
+    
+    const committeeData = committees[committee];
+    if (committeeData) {
+      document.getElementById("committee-info").innerHTML = `
+        <h2 class="text-3xl font-bold magical-title mb-8">${committeeData.name}</h2>
+        <div class="flex flex-col items-center mt-6">
+          <h3 class="text-xl font-semibold text-amber-400 role-title">Mentor</h3>
+          <img src="${committeeData.mentor.img}" alt="${committeeData.mentor.name}" class="w-32 h-32 rounded-full mt-2 profile-image">
+          <p class="mt-2 text-amber-200">${committeeData.mentor.name}</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-12 mt-6">
+          <div class="text-center">
+            <h3 class="text-xl font-semibold text-amber-400 role-title">Chairperson</h3>
+            <img src="${committeeData.chairperson.img}" alt="${committeeData.chairperson.name}" class="w-32 h-32 rounded-full mt-2 profile-image">
+            <p class="mt-2 text-amber-200">${committeeData.chairperson.name}</p>
+          </div>
+          <div class="text-center">
+            <h3 class="text-xl font-semibold text-amber-400 role-title">Treasurer</h3>
+            <img src="${committeeData.treasurer.img}" alt="${committeeData.treasurer.name}" class="w-32 h-32 rounded-full mt-2 profile-image">
+            <p class="mt-2 text-amber-200">${committeeData.treasurer.name}</p>
+          </div>
+          <div class="text-center">
+            <h3 class="text-xl font-semibold text-amber-400 role-title">Secretary</h3>
+            <img src="${committeeData.secretary.img}" alt="${committeeData.secretary.name}" class="w-32 h-32 rounded-full mt-2 profile-image">
+            <p class="mt-2 text-amber-200">${committeeData.secretary.name}</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-12 mt-10 w-full">
+          <div class="text-center flex-1">
+            <h3 class="text-xl font-semibold text-amber-400 role-title">Heads</h3>
+            <div class="flex flex-wrap justify-center gap-8 mt-4">
+              ${committeeData.heads.map(head => `
+                <div class="flex flex-col items-center">
+                  <img src="${head.img}" alt="${head.name}" class="w-24 h-24 rounded-full profile-image">
+                  <p class="mt-2 text-amber-200">${head.name}</p>
                 </div>
-                <div class="flex justify-center space-x-12 mt-6">
-                    <div class="text-center">
-                        <h3 class="text-xl font-semibold">Chairperson</h3>
-                        <img src="${committeeData.chairperson.img}" alt="${committeeData.chairperson.name}" class="w-32 h-32 rounded-full mt-2">
-                        <p class="mt-2">${committeeData.chairperson.name}</p>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-xl font-semibold">Treasurer</h3>
-                        <img src="${committeeData.treasurer.img}" alt="${committeeData.treasurer.name}" class="w-32 h-32 rounded-full mt-2">
-                        <p class="mt-2">${committeeData.treasurer.name}</p>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-xl font-semibold">Secretary</h3>
-                        <img src="${committeeData.secretary.img}" alt="${committeeData.secretary.name}" class="w-32 h-32 rounded-full mt-2">
-                        <p class="mt-2">${committeeData.secretary.name}</p>
-                    </div>
+              `).join('')}
+            </div>
+          </div>
+          <div class="text-center flex-1">
+            <h3 class="text-xl font-semibold text-amber-400 role-title">Co-Heads</h3>
+            <div class="flex flex-wrap justify-center gap-8 mt-4">
+              ${committeeData.coHeads.map(coHead => `
+                <div class="flex flex-col items-center">
+                  <img src="${coHead.img}" alt="${coHead.name}" class="w-24 h-24 rounded-full profile-image">
+                  <p class="mt-2 text-amber-200">${coHead.name}</p>
                 </div>
-                <div class="flex justify-center mt-10">
-                    <div class="w-1/2 text-center">
-                        <h3 class="text-xl font-semibold">Heads</h3>
-                        ${committeeData.heads.map(head => `
-                            <div class="flex flex-col items-center mt-4">
-                                <img src="${head.img}" alt="${head.name}" class="w-24 h-24 rounded-full">
-                                <p class="mt-2">${head.name}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div class="w-1/2 text-center">
-                        <h3 class="text-xl font-semibold">Co-Heads</h3>
-                        ${committeeData.coHeads.map(coHead => `
-                            <div class="flex flex-col items-center mt-4">
-                                <img src="${coHead.img}" alt="${coHead.name}" class="w-24 h-24 rounded-full">
-                                <p class="mt-2">${coHead.name}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        } else {
-            document.getElementById("committee-info").innerHTML = `<p class="text-center text-red-500">Committee not found</p>`;
-        }
-    </script>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+        <button onclick="window.location.href='comitte.html'" class="mt-8 px-6 py-2 bg-gradient-to-r from-amber-600 to-amber-800 hover:from-amber-700 hover:to-amber-900 text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/50">
+          Return to Main Hall
+        </button>
+      `;
+    } else {
+      document.getElementById("committee-info").innerHTML = `
+        <p class="text-center text-red-500 text-xl">This chamber has been sealed by the Ministry of Magic</p>
+        <button onclick="window.location.href='comitte.html'" class="mt-4 px-6 py-2 bg-gradient-to-r from-amber-600 to-amber-800 hover:from-amber-700 hover:to-amber-900 text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/50">
+          Return to Main Hall
+        </button>
+      `;
+    }
+    
+    // --- Snowflakes Animation ---
+    function createSnowflakes() {
+      const snowflakeCount = 50; // Number of snowflakes
+      for (let i = 0; i < snowflakeCount; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.textContent = '❄';
+        // Random horizontal position between 0 and 100vw
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        // Random animation delay and duration
+        const delay = Math.random() * 5;
+        const duration = 5 + Math.random() * 5; // 5 to 10 seconds
+        snowflake.style.animationDelay = `${delay}s`;
+        snowflake.style.animationDuration = `${duration}s`;
+        document.body.appendChild(snowflake);
+      }
+    }
+    
+    window.addEventListener('load', createSnowflakes);
+  </script>
 </body>
 </html>
